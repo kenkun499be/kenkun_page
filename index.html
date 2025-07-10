@@ -165,6 +165,7 @@
   </section>
 
   <script>
+    // 年齢計算
     function calculateAge() {
       const birth = new Date("2007-07-04");
       const now = new Date();
@@ -175,8 +176,26 @@
       }
       document.getElementById("age").textContent = `年齢：${age}歳`;
     }
-
     calculateAge();
+
+    // ズーム操作無効化
+    window.addEventListener('wheel', function(e) {
+      if (e.ctrlKey) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    window.addEventListener('keydown', function(e) {
+      if (e.ctrlKey && (e.key === '+' || e.key === '-' || e.key === '=' || e.key === '0')) {
+        e.preventDefault();
+      }
+    });
+
+    window.addEventListener('touchmove', function(e) {
+      if (e.scale !== 1) {
+        e.preventDefault();
+      }
+    }, { passive: false });
   </script>
 
 </body>
