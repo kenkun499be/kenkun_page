@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>けんくんのマイページ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #0f0f1c, #1b1b2f);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      background: rgba(30, 30, 60, 0.8);
+      border: 2px solid #00ffe7;
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 0 30px #00ffe7aa;
+      animation: fadeIn 1s ease-out forwards;
+      opacity: 0;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #00ffe7;
+    }
+
+    .age {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #b0fffc;
+    }
+
+    .desc {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    .links a {
+      margin: 0 10px;
+      font-size: 1.5rem;
+      color: #00ffe7;
+      transition: transform 0.3s ease;
+    }
+
+    .links a:hover {
+      transform: scale(1.2);
+      color: #ffffff;
+    }
+
+    @keyframes fadeIn {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>けんくん</h1>
+    <div class="age" id="age"></div>
+    <div class="desc">
+      統合版Minecraftのプレイヤーであり、<br>
+      アドオン製作者として活動しています。
+    </div>
+    <div class="links">
+      <a href="https://www.youtube.com/channel/UCbPiVCE1nmhqtYYbF3gNUow" target="_blank" title="YouTube">
+        <i class="fab fa-youtube"></i>
+      </a>
+      <a href="https://x.com/kenkun399" target="_blank" title="X (Twitter)">
+        <i class="fab fa-x-twitter"></i>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function calculateAge() {
+      const birth = new Date("2007-07-04");
+      const now = new Date();
+      let age = now.getFullYear() - birth.getFullYear();
+      const monthDiff = now.getMonth() - birth.getMonth();
+      if (monthDiff < 0 || (monthDiff === 0 && now.getDate() < birth.getDate())) {
+        age--;
+      }
+      document.getElementById("age").textContent = `年齢：${age}歳`;
+    }
+
+    calculateAge();
+  </script>
+</body>
+</html>
