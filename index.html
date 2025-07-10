@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>けんくんのマイページ</title>
+  <title>けんくん</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
@@ -12,11 +12,16 @@
       font-family: 'Orbitron', sans-serif;
       background: linear-gradient(135deg, #0f0f1c, #1b1b2f);
       color: #fff;
+      overflow-x: hidden;
+    }
+
+    section {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      overflow: hidden;
+      padding: 60px 20px;
+      animation: fadeIn 1s ease-out forwards;
+      opacity: 0;
     }
 
     .container {
@@ -27,14 +32,38 @@
       max-width: 500px;
       text-align: center;
       box-shadow: 0 0 30px #00ffe7aa;
-      animation: fadeIn 1s ease-out forwards;
-      opacity: 0;
     }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #00ffe7;
+      box-shadow: 0 0 20px #00ffe7aa;
+      margin-bottom: 20px;
+    }
+
+    .social-buttons {
+      margin-bottom: 20px;
+    }
+
+    .social-buttons a {
+      display: inline-block;
+      margin: 0 10px;
+      font-size: 1.8rem;
       color: #00ffe7;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .social-buttons a:hover {
+      transform: scale(1.2);
+      color: #ffffff;
+    }
+
+    h1, h2 {
+      color: #00ffe7;
+      margin-bottom: 20px;
     }
 
     .age {
@@ -49,16 +78,25 @@
       line-height: 1.5;
     }
 
-    .links a {
-      margin: 0 10px;
-      font-size: 1.5rem;
-      color: #00ffe7;
-      transition: transform 0.3s ease;
+    .projects {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
-    .links a:hover {
-      transform: scale(1.2);
-      color: #ffffff;
+    .project-card {
+      width: 300px;
+      height: 200px;
+      border: 2px dashed #00ffe7;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #b0fffc;
+      background: rgba(0, 0, 0, 0.2);
+      box-shadow: inset 0 0 15px #00ffe766;
     }
 
     @keyframes fadeIn {
@@ -74,22 +112,49 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>けんくん</h1>
-    <div class="age" id="age"></div>
-    <div class="desc">
-      統合版Minecraftのプレイヤーであり、<br>
-      アドオン製作者として活動しています。
+
+  <!-- 自己紹介セクション -->
+  <section>
+    <div class="container">
+      <img src="icon.png" alt="けんくんのアイコン" class="profile-img">
+
+      <div class="social-buttons">
+        <a href="https://www.youtube.com/channel/UCbPiVCE1nmhqtYYbF3gNUow" target="_blank" title="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://x.com/kenkun399" target="_blank" title="X (Twitter)">
+          <i class="fab fa-x-twitter"></i>
+        </a>
+      </div>
+
+      <h1>けんくん</h1>
+      <div class="age" id="age"></div>
+      <div class="desc">
+        統合版Minecraftのプレイヤーであり、<br>
+        アドオン製作者として活動しています。
+      </div>
     </div>
-    <div class="links">
-      <a href="https://www.youtube.com/channel/UCbPiVCE1nmhqtYYbF3gNUow" target="_blank" title="YouTube">
-        <i class="fab fa-youtube"></i>
-      </a>
-      <a href="https://x.com/kenkun399" target="_blank" title="X (Twitter)">
-        <i class="fab fa-x-twitter"></i>
-      </a>
+  </section>
+
+  <!-- アドオンセクション -->
+  <section>
+    <h2>アドオン</h2>
+    <div class="projects">
+      <div class="project-card">
+        🛠️ 準備中... Coming Soon
+      </div>
     </div>
-  </div>
+  </section>
+
+  <!-- 歌ってみたセクション -->
+  <section>
+    <h2>歌ってみた</h2>
+    <div class="projects">
+      <div class="project-card">
+        🎤 準備中... Coming Soon
+      </div>
+    </div>
+  </section>
 
   <script>
     function calculateAge() {
@@ -105,5 +170,6 @@
 
     calculateAge();
   </script>
+
 </body>
 </html>
