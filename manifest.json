@@ -3,7 +3,7 @@
   "short_name": "けんくん",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#0f0f1c",
+  "background_color": "#00ffe7",
   "theme_color": "#00ffe7",
   "icons": [
     {
