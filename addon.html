@@ -9,9 +9,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#00ffe7" />
-  <title>アドオン | けんくん</title>
+  <title>アドオン - けんくん</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <style>
     html, body {
       margin: 0;
@@ -24,69 +23,82 @@
       -ms-touch-action: manipulation;
     }
 
-    main {
-      max-width: 700px;
-      margin: 60px auto;
+    * {
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+    }
+
+    img, a {
+      -webkit-user-drag: none;
+      user-drag: none;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 80px auto;
       padding: 40px;
-      background: rgba(30, 30, 60, 0.85);
+      background: rgba(30, 30, 60, 0.8);
       border: 2px solid #00ffe7;
       border-radius: 20px;
       box-shadow: 0 0 30px #00ffe7aa;
-      animation: fadeIn 1s ease-out;
+      text-align: center;
     }
 
     h1 {
       color: #00ffe7;
-      text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
     p {
       font-size: 1.1rem;
       color: #b0fffc;
-      line-height: 1.6;
     }
 
     a.back {
       display: inline-block;
-      margin-top: 40px;
+      margin-top: 30px;
+      padding: 10px 20px;
+      border: 2px solid #00ffe7;
+      border-radius: 10px;
       color: #00ffe7;
       text-decoration: none;
-      border: 1px solid #00ffe7;
-      padding: 8px 16px;
-      border-radius: 10px;
-      transition: 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     a.back:hover {
       background: #00ffe722;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
-  <main>
+  <div class="container">
     <h1>アドオン</h1>
-    <p>現在公開可能なアドオンはまだありません。</p>
-    <a class="back" href="index.html">← 戻る</a>
-  </main>
+    <p>現在公開可能なアドオンはありません。<br>今後のアップデートをお楽しみに！</p>
+    <a href="index.html" class="back">← 戻る</a>
+  </div>
 
   <script>
-    window.addEventListener('wheel', function(e) {
+    window.addEventListener('wheel', e => {
       if (e.ctrlKey) e.preventDefault();
     }, { passive: false });
 
-    window.addEventListener('keydown', function(e) {
+    window.addEventListener('keydown', e => {
       if (e.ctrlKey && ['+', '-', '=', '0'].includes(e.key)) e.preventDefault();
     });
 
-    window.addEventListener('touchmove', function(e) {
+    window.addEventListener('touchmove', e => {
       if (e.scale !== 1) e.preventDefault();
     }, { passive: false });
+
+    window.addEventListener("contextmenu", e => e.preventDefault());
+
+    document.addEventListener("touchstart", function(e) {
+      if (e.target.closest("a, img, button")) {
+        e.target.addEventListener("contextmenu", e => e.preventDefault());
+      }
+    });
   </script>
 </body>
 </html>
