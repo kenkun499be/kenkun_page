@@ -24,6 +24,17 @@
       -ms-touch-action: manipulation;
     }
 
+    * {
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+    }
+
+    img, a {
+      -webkit-user-drag: none;
+      user-drag: none;
+    }
+
     section {
       display: flex;
       flex-direction: column;
@@ -106,14 +117,23 @@
       color: #b0fffc;
       background: rgba(0, 0, 0, 0.2);
       box-shadow: inset 0 0 15px #00ffe766;
-      text-align: center;
-      text-decoration: none;
-      transition: transform 0.3s ease, background 0.3s ease;
+      transition: 0.3s ease;
+      cursor: pointer;
     }
 
     .project-card:hover {
-      transform: scale(1.05);
-      background: rgba(0, 255, 231, 0.05);
+      background: rgba(0, 255, 231, 0.1);
+      transform: scale(1.02);
+    }
+
+    .project-card a {
+      color: inherit;
+      text-decoration: none;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     @keyframes fadeIn {
@@ -139,7 +159,8 @@
       </div>
       <div class="age" id="age"></div>
       <div class="desc">
-        統合版Minecraftが大好きなアドオン製作者
+        統合版Minecraftのプレイヤーであり、<br />
+        アドオン製作者として活動しています。
       </div>
     </div>
   </section>
@@ -147,14 +168,18 @@
   <section>
     <h2>アドオン</h2>
     <div class="projects">
-      <a href="addon.html" class="project-card">アドオン</a>
+      <div class="project-card">
+        <a href="addon.html">🛠️ 準備中... Coming Soon</a>
+      </div>
     </div>
   </section>
 
   <section>
     <h2>歌ってみた</h2>
     <div class="projects">
-      <a href="utattemita.html" class="project-card">歌ってみた</a>
+      <div class="project-card">
+        <a href="utattemita.html">🎤 準備中... Coming Soon</a>
+      </div>
     </div>
   </section>
 
@@ -163,26 +188,36 @@
       const birth = new Date("2007-07-04");
       const now = new Date();
       let age = now.getFullYear() - birth.getFullYear();
-      const monthDiff = now.getMonth() - birth.getMonth();
-      if (monthDiff < 0 || (monthDiff === 0 && now.getDate() < birth.getDate())) {
+      const m = now.getMonth() - birth.getMonth();
+      if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) {
         age--;
       }
       document.getElementById("age").textContent = `年齢：${age}歳`;
     }
+
     calculateAge();
 
-    // ズーム操作の防止
-    window.addEventListener('wheel', function(e) {
+    // ズーム防止
+    window.addEventListener('wheel', e => {
       if (e.ctrlKey) e.preventDefault();
     }, { passive: false });
 
-    window.addEventListener('keydown', function(e) {
+    window.addEventListener('keydown', e => {
       if (e.ctrlKey && ['+', '-', '=', '0'].includes(e.key)) e.preventDefault();
     });
 
-    window.addEventListener('touchmove', function(e) {
+    window.addEventListener('touchmove', e => {
       if (e.scale !== 1) e.preventDefault();
     }, { passive: false });
+
+    // 長押し防止
+    window.addEventListener("contextmenu", e => e.preventDefault());
+
+    document.addEventListener("touchstart", function(e) {
+      if (e.target.closest("a, img, button")) {
+        e.target.addEventListener("contextmenu", e => e.preventDefault());
+      }
+    });
   </script>
 </body>
 </html>
