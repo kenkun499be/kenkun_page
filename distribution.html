@@ -41,14 +41,43 @@
       color: #b0fffc;
       font-size: 1.1rem;
     }
+
+    .container {
+      max-width: 600px;
+      margin: 80px auto;
+      padding: 40px;
+      background: rgba(30, 30, 60, 0.8);
+      border: 2px solid #00ffe7;
+      border-radius: 20px;
+      box-shadow: 0 0 30px #00ffe7aa;
+      text-align: center;
+    }
+
+    a.back {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 10px 20px;
+      border: 2px solid #00ffe7;
+      border-radius: 10px;
+      color: #00ffe7;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    a.back:hover {
+      background: #00ffe722;
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
   <div class="section">
     <h1>配布作品</h1>
-    <div class="notice-box">
-      現在配布されている作品はありません。
-    </div>
+    <div class="container">
+    <h1>歌ってみた</h1>
+    <p>現在公開されている作品はありません。</p>
+    <a href="index.html" class="back">← 戻る</a>
+  </div>
   </div>
 </body>
 </html>
