@@ -4,45 +4,54 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <link rel="manifest" href="/my_page/manifest.json" />
-  <link rel="icon" href="/kenkun_page/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/my_page/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="/keisan/icons/icon-192.png" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#00ffe7" />
   <title>けんくん</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <style>
     html, body {
       margin: 0;
       padding: 0;
       font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(135deg, #0f0f1c, #1b1b2f);
       background-color: #0f0f1c;
+      background: linear-gradient(135deg, #0f0f1c, #1b1b2f);
       color: #fff;
       overflow-x: hidden;
       touch-action: manipulation;
-      -ms-touch-action: manipulation;
-    }
-
-    * {
       -webkit-user-select: none;
-      user-select: none;
       -webkit-touch-callout: none;
     }
 
-    img, a {
-      -webkit-user-drag: none;
-      user-drag: none;
+    .nav-buttons {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      z-index: 1000;
     }
 
-    .container {
-      max-width: 600px;
-      margin: 80px auto;
-      padding: 40px;
-      background: rgba(30, 30, 60, 0.8);
-      border: 2px solid #00ffe7;
-      border-radius: 20px;
-      box-shadow: 0 0 30px #00ffe7aa;
+    .nav-buttons a {
+      background: rgba(0, 255, 231, 0.1);
+      border: 1px solid #00ffe7;
+      padding: 6px 12px;
+      border-radius: 8px;
+      color: #00ffe7;
+      font-size: 0.95rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .nav-buttons a:hover {
+      background: rgba(0, 255, 231, 0.3);
+      transform: scale(1.05);
+    }
+
+    section {
+      padding: 100px 20px 40px;
       text-align: center;
     }
 
@@ -51,55 +60,50 @@
       margin-bottom: 20px;
     }
 
-    p {
-      font-size: 1.1rem;
-      color: #b0fffc;
+    .video-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+      margin-top: 20px;
     }
 
-    a.back {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 10px 20px;
+    iframe {
+      width: 90%;
+      max-width: 560px;
+      height: 315px;
       border: 2px solid #00ffe7;
-      border-radius: 10px;
-      color: #00ffe7;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-
-    a.back:hover {
-      background: #00ffe722;
-      transform: scale(1.05);
+      border-radius: 12px;
+      box-shadow: 0 0 20px #00ffe799;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>歌ってみた</h1>
-    <p>現在公開されている作品はありません。</p>
-    <a href="index.html" class="back">← 戻る</a>
+
+  <div class="nav-buttons">
+    <a href="index.html">ホーム</a>
   </div>
 
+  <section>
+    <h1>歌ってみた</h1>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/XxK5kphQuz4" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
   <script>
-    window.addEventListener('wheel', e => {
+    window.addEventListener('wheel', function(e) {
       if (e.ctrlKey) e.preventDefault();
     }, { passive: false });
 
-    window.addEventListener('keydown', e => {
+    window.addEventListener('keydown', function(e) {
       if (e.ctrlKey && ['+', '-', '=', '0'].includes(e.key)) e.preventDefault();
     });
 
-    window.addEventListener('touchmove', e => {
+    window.addEventListener('touchmove', function(e) {
       if (e.scale !== 1) e.preventDefault();
     }, { passive: false });
-
-    window.addEventListener("contextmenu", e => e.preventDefault());
-
-    document.addEventListener("touchstart", function(e) {
-      if (e.target.closest("a, img, button")) {
-        e.target.addEventListener("contextmenu", e => e.preventDefault());
-      }
-    });
   </script>
+
 </body>
 </html>
