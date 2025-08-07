@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <link rel="manifest" href="/kenkun_page/manifest.json" />
-  <link rel="icon" href="/kenkun_page/favicon.ico" type="image/x-icon" />
+  <link rel="manifest" href="/my_page/manifest.json" />
+  <link rel="icon" href="/my_page/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="/keisan/icons/icon-192.png" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -17,7 +17,6 @@
       margin: 0;
       padding: 0;
       font-family: 'Orbitron', sans-serif;
-      background-color: #0f0f1c;
       background: linear-gradient(135deg, #0f0f1c, #1b1b2f);
       color: #fff;
       overflow-x: hidden;
@@ -57,7 +56,7 @@
 
     h1 {
       color: #00ffe7;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
     .video-container {
@@ -81,17 +80,19 @@
 <body>
 
   <div class="nav-buttons">
-    <a href="index.html">ホーム</a>
+    <a href="index.html">🏠 ホーム</a>
   </div>
 
   <section>
     <h1>歌ってみた</h1>
     <div class="video-container">
       <iframe src="https://www.youtube.com/embed/XxK5kphQuz4" frameborder="0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/zmV91d6HUd0" frameborder="0" allowfullscreen></iframe>
     </div>
   </section>
 
   <script>
+    // ズーム防止
     window.addEventListener('wheel', function(e) {
       if (e.ctrlKey) e.preventDefault();
     }, { passive: false });
